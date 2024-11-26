@@ -27,3 +27,11 @@ print(first_repository["text_matches"][0]["matches"])
 response3 = requests.post("https://httpbin.org/post", data=[("key", "value")])
 print(response3.request.url)
 print(response3.request.body)
+
+response4 = requests.get(
+     "https://httpbin.org/basic-auth/user/passwd",
+     auth=("user", "passwd")
+)
+
+print(response4.status_code)
+print(response4.request.headers["Authorization"])
