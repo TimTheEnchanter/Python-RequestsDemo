@@ -1,5 +1,6 @@
 import requests
 from requests.exceptions import HTTPError
+from requests.auth import HTTPBasicAuth
 
 response = requests.get(
     "https://api.github.com/search/repositories",
@@ -30,7 +31,7 @@ print(response3.request.body)
 
 response4 = requests.get(
      "https://httpbin.org/basic-auth/user/passwd",
-     auth=("user", "passwd")
+     auth=HTTPBasicAuth("user", "passwd")
 )
 
 print(response4.status_code)
