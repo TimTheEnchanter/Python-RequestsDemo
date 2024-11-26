@@ -1,18 +1,15 @@
 import requests
 from requests.exceptions import HTTPError
 
-try:
-    response = requests.get("https://api.github.com")
-    response.raise_for_status()
-except HTTPError as http_err:
-        print(f"HTTP error occurred: {http_err}")
-except Exception as err:
-        print(f"Other error occurred: {err}")
-else:
-        print("Success!")
+response = requests.get(
+    "https://api.github.com/search/repositories",
+    params={"q": "language:python", "sort": "stars", "order": "desc"},
+)
 
-#print(response.content)
-print(response.headers)
-
-response_dict = response.json()
-print(response_dict["emojis_url"])
+json_response = response.json()
+popular_repositories = json_response["items"]
+for repo in popular_repositories[:3]:
+    print(f"Name: {repo['name']}")
+    print(f"Description: {repo['description']}")
+    print(f"Stars: {repo['stargazers_count']}")
+    print()
