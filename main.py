@@ -25,4 +25,5 @@ first_repository = json_response2["items"][0]
 print(first_repository["text_matches"][0]["matches"])
 
 response3 = requests.post("https://httpbin.org/post", data=[("key", "value")])
-print(response3.json())
+print(response3.request.url)
+print(response3.request.body)
