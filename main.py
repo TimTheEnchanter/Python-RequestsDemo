@@ -13,3 +13,6 @@ else:
 
 #print(response.content)
 print(response.json())
+
+response_dict = response.json()
+print(response_dict["emojis_url"])
