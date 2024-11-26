@@ -11,5 +11,5 @@ except Exception as err:
 else:
         print("Success!")
 
-print(response.content)
-print(response.text)
+#print(response.content)
+print(response.json())
