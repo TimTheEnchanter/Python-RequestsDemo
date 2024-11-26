@@ -36,3 +36,11 @@ response4 = requests.get(
 
 print(response4.status_code)
 print(response4.request.headers["Authorization"])
+
+
+token = "<PA ACCESS TOKEN GOES HERE>"
+response5 = requests.get(
+     "https://api.github.com/user",
+     auth=("", token)
+)
+print(response5.status_code)
