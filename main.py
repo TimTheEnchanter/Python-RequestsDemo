@@ -1,8 +1,12 @@
 import requests
+from requests.exceptions import HTTPError
 
-response = requests.get("https://api.github.com")
-
-if response.status_code == 200:
-    print("Success!")
-elif response.status_code == 404:
-    raise Exception(f"Request Failed - status code: {response.status_code}")
+try:
+    response = requests.get("https://api.github.com")
+    response.raise_for_status()
+except HTTPError as http_err:
+        print(f"HTTP error occurred: {http_err}")
+except Exception as err:
+        print(f"Other error occurred: {err}")
+else:
+        print("Success!")
