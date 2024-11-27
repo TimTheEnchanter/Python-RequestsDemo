@@ -1,6 +1,7 @@
 import requests
 from requests.exceptions import HTTPError
 from requests.auth import HTTPBasicAuth
+from custom_token_auth import TokenAuth
 
 response = requests.get(
     "https://api.github.com/search/repositories",
@@ -43,4 +44,13 @@ response5 = requests.get(
      "https://api.github.com/user",
      auth=("", token)
 )
+
 print(response5.status_code)
+print(response5.request.headers["Authorization"])
+
+response6 = requests.get(
+     "https://api.github.com/user",
+     auth=TokenAuth(token)
+)
+
+print(response6.request.headers["Authorization"])
