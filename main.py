@@ -59,6 +59,6 @@ response7 = requests.get("https://api.github.com", verify=False)
 
 print(response7)
 
-response8 = requests.get("https://api.github.com", timeout=4)
+response8 = requests.get("https://api.github.com", timeout=(3.05, 5))
 
 print(response8)
