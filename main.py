@@ -58,3 +58,7 @@ print(response6.request.headers["Authorization"])
 response7 = requests.get("https://api.github.com", verify=False)
 
 print(response7)
+
+response8 = requests.get("https://api.github.com", timeout=4)
+
+print(response8)
