@@ -2,6 +2,7 @@ import requests
 from requests.exceptions import HTTPError
 from requests.auth import HTTPBasicAuth
 from custom_token_auth import TokenAuth
+from requests.exceptions import Timeout
 
 response = requests.get(
     "https://api.github.com/search/repositories",
@@ -59,6 +60,11 @@ response7 = requests.get("https://api.github.com", verify=False)
 
 print(response7)
 
-response8 = requests.get("https://api.github.com", timeout=(3.05, 5))
+try:
+    response8 = requests.get("https://api.github.com", timeout=(3.05, 5))
+    print(response8)
+except Timeout:
+    print("The request timed out")
+else:
+    print("The request did not time out")
 
-print(response8)
