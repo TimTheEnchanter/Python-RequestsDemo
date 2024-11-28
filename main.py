@@ -54,3 +54,7 @@ response6 = requests.get(
 )
 
 print(response6.request.headers["Authorization"])
+
+response7 = requests.get("https://api.github.com", verify=False)
+
+print(response7)
